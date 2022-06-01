@@ -28,9 +28,9 @@ class Routes {
 		global $upstatement_routes;
 		if (isset($upstatement_routes->router)) {
 			$route = $upstatement_routes->router->match();
-			
+
 			unset($upstatement_routes->router);
-			
+
 			if ($route && isset($route['target'])) {
 				if ( isset($route['params']) ) {
 					call_user_func($route['target'], $route['params']);
@@ -131,7 +131,7 @@ class Routes {
 		}
 
 		if ($query) {
-			add_action('do_parse_request', function() use ($query) {
+			add_action('parse_request', function() use ($query) {
 				global $wp;
 				if ( is_callable($query) )
 					$query = call_user_func($query);
